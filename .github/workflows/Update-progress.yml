@@ -13,6 +13,9 @@ on:
         required: true
         default: "test"
 
+permissions:
+  contents: write
+
 jobs:
   update:
     name: Update
