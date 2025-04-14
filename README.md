@@ -11,7 +11,7 @@
 初回はこのレポジトリを clone してください。
 
 ```
-$ git clone https://github.com/SDS-nlp/100knock2025.git
+$ git clone https://github.com/SDS-NLP/100knock2025.git
 ```
 
 コードを書いたら remote repository に push してください。
@@ -44,7 +44,7 @@ TA and participants review your code.
 
 You should clone this repository the first time.
 ```
-$ git clone https://github.com/SDS-nlp/100knock2025.git
+$ git clone https://github.com/SDS-NLP/100knock2025.git
 ```
 
 "##" and "XX" mean "two-digit question number". (e.g. `chapter01`, `knock00.py`)
