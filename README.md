@@ -64,3 +64,5 @@ Please ask TA's helps **positively**.
 Please commit your script and picture only. (Don't commit the other files such as text file because file size of the output will be gradually larger.)  
 **Don't change the others' directories.**  
 Teaching materials of this meeting are written in Japanese, so some participants need to translate them.
+
+It's for test.
