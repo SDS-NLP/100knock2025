@@ -7,7 +7,3 @@ for i in range(len(l1)):
     Answer+=l2[i]
 
 print(Answer)
-
-
-
-
