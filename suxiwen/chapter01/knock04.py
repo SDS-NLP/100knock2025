@@ -1,13 +1,18 @@
-def create_ngram(sequence, n):
-    return [tuple(sequence[i:i+n]) for i in range(len(sequence) - n + 1)]
+words = sentence.split()  # スペースで単語に分割
 
-text = "I am an NLPer"
+# 特殊な位置（1-based index）
+special_positions = {1, 5, 6, 7, 8, 9, 15, 16, 19}
 
+element_dict = {}
+for idx, word in enumerate(words, start=1):  # idxは1から始まる位置
+    # 単語から記号（句点など）を除去（末尾の句点のみ想定）
+    cleaned_word = word.rstrip('.')  # 例："Fluorine." → "Fluorine"
+    
+    if idx in special_positions:
+        key = cleaned_word[0]  # 先頭1文字
+    else:
+        key = cleaned_word[:2]  # 先頭2文字
+    
+    element_dict[idx] = key
 
-char_tri_gram = create_ngram(list(text), 3)
-
-
-word_bi_gram = create_ngram(text.split(), 2)
-
-print("文字tri-gram：", char_tri_gram)
-print("単語bi-gram：", word_bi_gram)
+print(element_dict)
