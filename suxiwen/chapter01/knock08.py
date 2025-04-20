@@ -4,4 +4,4 @@ def cipher(s):
 
 message = "Hello, World!"
 print("暗号化後:", cipher(message)) 
-print("復号化後:", cipher(cipher(message)))
+print("復号化後:", cipher(cipher(message)))  
