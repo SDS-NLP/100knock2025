@@ -1,25 +1,23 @@
-def create_bigram(s):
-    return [s[i:i + 2] for i in range(len(s) - 1)]
+def create_ngram(sequence, n):
+    """
+    シーケンスからn-gramを生成する関数
+    :param sequence: 文字列またはリストのシーケンス
+    :param n: n-gramのn値（例：3→tri-gram, 2→bi-gram）
+    :return: n-gramのリスト（タプルで格納）
+    """
+    return [tuple(sequence[i:i+n]) for i in range(len(sequence) - n + 1)]
 
+# 入力文
+sentence = "I am an NLPer"
 
-str_x = "paraparaparadise"
-str_y = "paragraph"
+# 文字tri-gram（文字列を1文字ずつのリストに変換）
+char_sequence = list(sentence)  # 文字のリスト: ['I', ' ', 'a', 'm', ' ', 'a', 'n', ' ', 'N', 'L', 'P', 'e', 'r']
+char_trigram = create_ngram(char_sequence, 3)
 
+# 単語bi-gram（文字列をスペースで分割したリスト）
+word_sequence = sentence.split()  # 単語のリスト: ['I', 'am', 'an', 'NLPer']
+word_bigram = create_ngram(word_sequence, 2)
 
-X = set(create_bigram(str_x))
-Y = set(create_bigram(str_y))
-
-union_xy = X | Y  
-intersection_xy = X & Y 
-difference_xy = X - Y  
-
-
-se_in_x ='se' in X
-se_in_y ='se' in Y
-
-
-print("X と Y の和集合:", union_xy)
-print("X と Y の積集合:", intersection_xy)
-print("X と Y の差集合:", difference_xy)
-print("'se' が X に含まれるか:", se_in_x)
-print("'se' が Y に含まれるか:", se_in_y)
+# 結果出力
+print("文字tri-gram：", char_trigram)
+print("単語bi-gram：", word_bigram)

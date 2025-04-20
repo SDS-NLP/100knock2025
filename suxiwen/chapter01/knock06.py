@@ -1,11 +1,25 @@
-# 一行でbi-gram生成と集合演算をまとめる
-str_x, str_y = "paraparaparadise", "paragraph"
-X, Y = ({str_x[i:i+2] for i in range(len(str_x)-1)},  # Xのbi-gram集合
-        {str_y[i:i+2] for i in range(len(str_y)-1)})  # Yのbi-gram集合
+def create_bigram(s):
+    return [s[i:i + 2] for i in range(len(s) - 1)]
 
-# 結果出力（直接演算結果を表示）
-print("和集合:", X | Y)
-print("積集合:", X & Y)
-print("差集合:", X - Y)
-print("'se'がXに含まれる？", 'se' in X)  # True
-print("'se'がYに含まれる？", 'se' in Y)  # False
+str_x = "paraparaparadise"
+str_y = "paragraph"
+
+
+X = set(create_bigram(str_x))
+Y = set(create_bigram(str_y))
+
+
+union_xy = X | Y 
+intersection_xy = X & Y  
+difference_xy = X - Y  
+
+
+se_in_x ='se' in X
+se_in_y ='se' in Y
+
+
+print("X と Y の和集合:", union_xy)
+print("X と Y の積集合:", intersection_xy)
+print("X と Y の差集合:", difference_xy)
+print("'se' が X に含まれるか:", se_in_x)
+print("'se' が Y に含まれるか:", se_in_y)
