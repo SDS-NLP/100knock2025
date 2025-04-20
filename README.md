@@ -17,7 +17,6 @@ $ git clone https://github.com/SDS-NLP/100knock2025.git
 コードを書いたら remote repository に push してください。
 チャプター名、ファイル名はすべて二桁の数字にしてください（例: `chapter01`, `knock00.py`）。
 ```
-$ cd development/100knock2025
 $ git branch <任意のブランチ名(以下、b_name)> (e.g. git branch hajime)
 $ git checkout <b_name>
 $ git add <任意のファイル・フォルダ> (e.g. git add ./hajime/chapter01/knock01.py)
