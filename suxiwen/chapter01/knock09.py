@@ -1,5 +1,3 @@
-import random
-
 def typoglycemia(word):
     if len(word) <= 4:
         return word
