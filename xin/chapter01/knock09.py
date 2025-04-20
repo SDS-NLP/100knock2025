@@ -12,8 +12,7 @@ def process_sentence(sentence):
     """文章内の単語を変換"""
     words = sentence.split()
     return " ".join(shuffle_inner(word) for word in words)
-
-# 実行例
-sentence = "Often considered to be the first modern novel, Don Quixote is a wonderful burlesque of the popular literature its disordered protagonist is obsessed with."
+# テスト
+sentence = "Don Quijote is often considered to be the first modern novel."
 result = process_sentence(sentence)
 print(result)

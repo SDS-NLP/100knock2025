@@ -4,15 +4,15 @@ def n_gram(sequence, n):
 
 X = n_gram("paraparaparadise", 2)
 Y = n_gram("paragraph", 2)
-union_set = X | Y
-intersection_set = X & Y
-difference_set = X - Y
+wa_set = X | Y
+seki_set = X & Y
+sa_set = X - Y
 contains_se_x = "se" in X
 contains_se_y = "se" in Y
 print("X:", X)
 print("Y:", Y)
-print("和集合:", union_set)
-print("積集合:", intersection_set)
-print("差集合:", difference_set)
+print("和集合:", wa_set)
+print("積集合:", seki_set)
+print("差集合:", sa_set)
 print("'se' は X に含まれる？", contains_se_x)
 print("'se' は Y に含まれる？", contains_se_y)
