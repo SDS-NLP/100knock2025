@@ -12,3 +12,4 @@ encrypted = angou(text)
 print("暗号化：", encrypted)
 
 print("復号化：", angou(encrypted))
+

@@ -22,3 +22,4 @@ print("差集合 (X - Y):", difference)
 
 print("'se' in X:", 'se' in X)
 print("'se' in Y:", 'se' in Y)
+
