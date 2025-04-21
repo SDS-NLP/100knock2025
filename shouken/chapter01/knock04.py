@@ -13,3 +13,4 @@ for index, word in enumerate(words, start=1):
 
 for k in sorted(result.keys()):
     print(f"{k}: {result[k]}")
+    
