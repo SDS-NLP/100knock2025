@@ -10,7 +10,7 @@ for i in range(len(a)):
     result += a[len(a)-i-1]
 print(result)
 
-#While
+#Whileつかってみる
 b = 0
 result1 = ""
 while b < len(a):

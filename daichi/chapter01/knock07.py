@@ -1,8 +1,7 @@
 
 def template(x,y,z):
     print(str(x)+"時の"+str(y)+"は"+str(z))
-    #こっちでも
-    print(f'{x}時の{y}は{z}')
+    #print(f'{x}時の{y}は{z}')　の方が楽かも
 
 x=12
 y="気温"
