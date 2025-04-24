@@ -13,10 +13,20 @@ for i in range(len(y)-1):
 X=set(X)
 Y=set(Y)
 
-print(X|Y)
-print(X&Y)
-print(X-Y)
+print(f"和集合：{X|Y}")
+print(f"積集合：{X&Y}")
+print(f"差集合：{X-Y}")
 
 se = {'se'}
-print(se <= X)
-print(se <= Y)
+
+if se in X:
+    print("’se’というbi-gramがXに含まれます。")
+else:
+    print("’se’というbi-gramはXに含まれません。")
+
+if se in Y:
+    print("’se’というbi-gramがYに含まれます。")
+else:
+    print("’se’というbi-gramはYに含まれません。")
+
+

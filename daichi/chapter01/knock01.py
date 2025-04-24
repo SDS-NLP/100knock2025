@@ -14,6 +14,7 @@ for i in range(len(str)):
         result1 += str[i]
 print(result1)
 
+#whileでやってみたかった。
 result2 = ""
 num = 1
 while len(result2) < len(str)/2:
@@ -21,5 +22,5 @@ while len(result2) < len(str)/2:
     num += 2
 print(result2)
 
-#1つおきに取り出してプリントする。一個上のやり方よりももっと楽
+#1つおきに取り出してプリントする。一番楽。
 print(str[1::2])  

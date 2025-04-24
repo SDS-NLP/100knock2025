@@ -1,23 +1,16 @@
 import random
 
-def typoglycemia(sentence):
-    words = sentence.split()  # 単語に分割
-    result = []
-
-    for word in words:
-        if len(word) <= 4:
-            result.append(word)
+def Typoglycemia(sentence):
+    mylist = sentence.split(' ')
+    new_list = list()
+    for i in mylist:
+        if len(i) <= 4:
+            new_list.append(i)
         else:
-            head = word[0]
-            tail = word[-1]
-            middle = list(word[1:-1])
+            temp = i[1:len(x)-1]
+            temp = ''.join(random.sample(temp, len(temp)))
+            new_list.append(i[0] + temp + i[len(i)-1])
+    return ' '.join(map(str, new_list))
 
-            random.shuffle(middle)  # 中身をランダムに並び替え
-            shuffled = head + ''.join(middle) + tail
-            result.append(shuffled)
-
-    return ' '.join(result)
-
-
-text = "I couldn’t believe that I could actually understand what I was reading : the phenomenal power of the human mind ."
-print(typoglycemia(text))
+x = r"I couldn't believe that I could actually understand what I was reading : the phenomenal power of the human mind ."
+print(Typoglycemia(x))
