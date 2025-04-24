@@ -1,16 +1,10 @@
-
-def cipher(text):
-    ciphersentence=""
-    for c in text:
-        if c.islower() == True:
-            ciphersentence += chr(219 - ord(c))
+def cipher(x):
+    ciphersentence = ''
+    for i in x:
+        if i.islower() == True:
+            ciphersentence += chr(219 - ord(i))
         else:
-            ciphersentence += c
+            ciphersentence += i
     return(ciphersentence)
 
-sentence = "I have a pen."
-encripted = cipher(sentence)
-decripted = cipher(encripted)
-
-print(encripted)
-print(decripted)
+print(cipher('hello world'))
