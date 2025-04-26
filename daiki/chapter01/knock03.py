@@ -8,5 +8,4 @@ for i in range(len(a)):
         numbers.append(len(a[i].strip(".")))
     else:
         numbers.append(len(a[i]))
-for ele in numbers:
-    print(ele)
+print(numbers)
