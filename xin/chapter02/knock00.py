@@ -1,5 +1,4 @@
 import subprocess
-
 # ファイルの行数をカウントする関数
 def count_lines(filepath):
     with open(filepath, 'r', encoding='utf-8') as file:
@@ -12,16 +11,16 @@ def count_lines_with_wc(filepath):
     # 出力例: "10 filename.txt" -> 10 を抽出
     return int(result.stdout.split()[0])
 
-content= "popular-names.txt"
+file_path='/home/tanxin/100knock2025/xin/chapter02/popular-names.txt'
 
-print(content)
+print(file_path)
 
 # Pythonでカウント
-python_count = count_lines(content)
+python_count = count_lines(file_path)
 print(f"Pythonでカウントした行数: {python_count}")
 
 # wcコマンドでカウント
-wc_count = count_lines_with_wc(content)
+wc_count = count_lines_with_wc(file_path)
 print(f"wcコマンドでカウントした行数: {wc_count}")
 
 # 一致しているか確認
