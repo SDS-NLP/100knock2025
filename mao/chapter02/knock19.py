@@ -11,3 +11,4 @@ for line in sorted_lines:
     print(line)
 
 #UNIXコマンド
+#sort -k3,3nr mao/chapter02/popular-names.txt
