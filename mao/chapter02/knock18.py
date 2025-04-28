@@ -23,11 +23,5 @@ for value,count in sorted_counts:
 #cut -f:出力する列指定、-d:区切り文字、
 #uniq -c:各行の出現回数も一緒に表示する(デフォでは重複消去)
 #uniqを効率的に作用させるためには先にsortコマンドで重複させるものを連続させておくといい
+#sort -nr:数値順に並べ替えたあと逆順処理を行う
 #cut -f 1 mao/chapter02/popular-names.txt | sort | uniq -c |sort -nr
-
-
-
-
-
-#UNIXコマンド
-#
