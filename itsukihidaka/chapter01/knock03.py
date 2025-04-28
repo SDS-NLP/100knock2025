@@ -4,6 +4,6 @@ text = "Now I need a drink, alcoholic of course, after the heavy lectures involv
 
 word_list = text.split()
 
-word_length_list = [len(word) for word in word_list]
+word_length_list = [len(word.rstrip(".,")) for word in word_list]
 
 print(word_length_list)
