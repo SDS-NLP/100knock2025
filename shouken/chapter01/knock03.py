@@ -11,3 +11,4 @@ for word in words:
     lengths.append(length)
 
 print(lengths)
+
