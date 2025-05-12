@@ -2,8 +2,8 @@ from knock20 import uk_article_txt
 import re
 
 pattern = "\[\[ファイル:(.*?)(?:\|.*?|)\]\]"
-uk_categories = re.findall(pattern, uk_article_txt)
-print(uk_categories)
+uk_files = re.findall(pattern, uk_article_txt)
+print(uk_files)
 
 """
 ( と ): これはキャプチャグループを作成します。この部分に一致した文字列は後で参照することができます。
