@@ -7,8 +7,8 @@ cabocha = CaboCha.Parser()
 
 # ファイルパス設定
 base_dir = os.path.expanduser("~/100knock/100knock2025/harry/chapter04")
-input_file = os.path.join(base_dir, "kokoro_cleaned.txt")
-output_file = os.path.join(base_dir, "kokoro_kakari.csv")
+input_file = os.path.join(base_dir, "merosu_short.txt")
+output_file = os.path.join(base_dir, "merosu_kakari.csv")
 
 # 結果格納用リスト
 pairs = []
