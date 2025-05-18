@@ -22,7 +22,9 @@ response = client.messages.create(
 senryu = response.content[0].text
 print(senryu)
 
-client = genai.Client(api_key="AIzaSyBHmsBUo2GcKGSisUPRF9Mud1pg-aiKgAo")
+with open("../../../gemini_apikey.txt", mode = "r") as f:
+    key = f.read()
+client = genai.Client(api_key = key)
 
 response1 = client.models.generate_content(
     model="gemini-2.0-flash", 
