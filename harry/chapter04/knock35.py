@@ -4,7 +4,7 @@ import CaboCha
 parser = CaboCha.Parser()
 
 # 対象文
-sentence = "太郎はこの本を二郎を見た女性に渡した。"
+sentence = "太郎は花子に次郎の描いた絵を送った。"
 
 # 構文解析
 tree = parser.parse(sentence)
