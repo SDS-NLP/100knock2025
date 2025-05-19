@@ -1,3 +1,8 @@
+# $ brew install mecab
+# $ brew install mecab-ipadic
+# $ pip install mecab-python3
+# $ python -m pip install mecab ← ここで苦戦した！
+
 import os
 text = """
 メロスは激怒した。
@@ -11,10 +16,9 @@ text = """
 script_dir = os.path.dirname(os.path.abspath(__file__))
 file_path = os.path.join(script_dir, "melos.mecab")
 
+# 形態素解析
 if __name__ == "__main__":
-    import MeCab
-    import unidic
-    import os
+    import MeCab # 日本語向け形態素解析ツール
 
     mecab = MeCab.Tagger("-r/opt/homebrew/etc/mecabrc")
     result = mecab.parse(text)
@@ -22,6 +26,7 @@ if __name__ == "__main__":
         f.write(result)
     print(result)
 
+# 形態素解析結果の読み込み
 with open(file_path, "r") as f:
   general_list = []
   melos_list = []

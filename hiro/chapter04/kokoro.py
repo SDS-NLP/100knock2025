@@ -1,11 +1,9 @@
 # $ brew install mecab
 # $ brew install mecab-ipadic
-# $ brew install mecab-unidic
 # $ pip install mecab-python3
 # $ python -m pip install mecab ← ここで苦戦した！
 
 import MeCab
-import unidic
 import os
 
 # パスの特定
