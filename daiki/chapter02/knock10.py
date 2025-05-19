@@ -1,4 +1,4 @@
-file = "/Users/aa/Downloads/popular-names.txt"
+file = "daiki/chapter02/popular-names.txt"
 
 with open(file, 'r') as r:
     #'r'は読み込みモードという意味
@@ -7,5 +7,6 @@ with open(file, 'r') as r:
         count += 1
 print(count)
 
-#wcコマンド: wc -l /Users/aa/Downloads/popular-names.txt
+#wcコマンド: wc -l daiki/chapter02/popular-names.txt
+#結果：2780
 #-lはlineの略で行数を数える時に使う。
