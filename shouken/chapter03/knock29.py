@@ -29,6 +29,10 @@ def extract_basic_info(text):
                 key = parts[0].strip()
                 value = parts[1].strip()
                 info_dict[key] = value
+    
+    #'| 首都 = ロンドン'
+    #'| 首都 = ロンドン' → ' 首都 = ロンドン'
+    #' 首都' と 'ロンドン'
 
     return info_dict
 
@@ -46,7 +50,7 @@ def get_flag_image_url(file_name):
     response = requests.get(endpoint, params=params)
     data = response.json()
 
-    pages = data.get('query', {}).get('pages', {})
+    pages = data.get('query', {}).get('pages', {}) #辞書変換
     for page in pages.values():
         if 'imageinfo' in page:
             return page['imageinfo'][0]['url']
