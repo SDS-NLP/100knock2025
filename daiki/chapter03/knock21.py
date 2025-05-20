@@ -11,5 +11,7 @@ with gzip.open(path, 'rt', encoding = 'utf-8') as file:
             uk_text = article['text']
             break
 category_lines = [line for line in uk_text.split('\n') if '[[Category:' in line]
-for line in category_lines:
-    print(line)
+if __name__ == "__main__":
+
+   for line in category_lines:
+      print(line)

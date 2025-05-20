@@ -5,4 +5,4 @@ with open(file, 'r') as r:
     sorted_lines = sorted(lines, key = lambda item: int(item.split()[2]), reverse = True)
     for line in sorted_lines:
         print(line.strip())
-    
+#sort -k3,3nr daiki/chapter02/popular-names.txt
