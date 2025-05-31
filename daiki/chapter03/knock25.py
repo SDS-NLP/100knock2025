@@ -18,7 +18,7 @@ re.MULTILINE | re.DOTALL)
 
 m = pattern.search(uk_text)
 infobox = m.group(1)
-
+#辞書作成
 info = {}
 for line in infobox.split('\n'):
     line = line.strip()
