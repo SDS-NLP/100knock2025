@@ -7,7 +7,7 @@ model_path = '/Users/aa/GoogleNews-vectors-negative300.bin'
 model = KeyedVectors.load_word2vec_format(model_path, binary=True)
 
 # アナロジーファイル読み込み
-analogy_path = '/Users/aa/questions-words.txt'  # パスを適宜変更
+analogy_path = '/Users/aa/questions-words.txt'  
 section = 'capital-common-countries'
 
 results = []
