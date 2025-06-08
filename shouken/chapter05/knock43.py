@@ -20,14 +20,14 @@ for question, all_choices, correct_letter in data:
     correct_index = ["A", "B", "C", "D"].index(correct_letter)
     correct_text = all_choices[correct_index]
 
-    # 正解以外をシャッフル
+    # 正解以外をシャッフル（直前まで+直後から末尾）
     other_choices = all_choices[:correct_index] + all_choices[correct_index+1:]
     random.shuffle(other_choices)
     randomized_choices = dict(zip(["A", "B", "C"], other_choices))
     randomized_choices["D"] = correct_text
 
     # 選択肢を組み立て
-    choice_lines = [f"{k}. {v}" for k, v in randomized_choices.items()]
+    choice_lines = [f"{key}. {value}" for key, value in randomized_choices.items()]
 
     # プロンプト
     prompt = f"次の問いに答えてください。\n\nQ: {question}\n" + "\n".join(choice_lines) + "\n\n答えは？"
@@ -46,7 +46,6 @@ for question, all_choices, correct_letter in data:
     if "D" in reply:
         correct += 1
 
-# 結果表示
 print()
 print(f"[正解をDに固定] 正解数: {correct} / {total}")
 print(f"[正解をDに固定] 正解率: {correct / total:.2%}")
