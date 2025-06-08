@@ -130,11 +130,10 @@ dmypy.json
 .DS_Store
 
 # Large data files and word vectors
-*.bin
-*.vec
-GoogleNews-vectors-*.bin
+GoogleNews-vectors-negative300.bin
 questions-words.txt
-ans*.txt
+ans54.txt
+ans56.txt
 
 shota/chapter02/popular-names.txt
 shota/chapter02/col2.txt
