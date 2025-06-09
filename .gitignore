@@ -128,6 +128,14 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .DS_Store
+
+# Large data files and word vectors
+*.bin
+*.vec
+GoogleNews-vectors-*.bin
+questions-words.txt
+ans*.txt
+
 shota/chapter02/popular-names.txt
 shota/chapter02/col2.txt
 shota/chapter02/col1.txt
