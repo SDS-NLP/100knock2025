@@ -6,46 +6,56 @@ knock54:アナロジーデータでの実験
 求めた単語と類似度は、各事例と一緒に記録せよ
 """
 from gensim.models import KeyedVectors
+from tqdm import tqdm
+import pandas as pd
 
-#モデル,データ読み込み
-questions_path="mao/chapter06/questions-words.txt"
-model_path="mao/chapter06/GoogleNews-vectors-negative300.bin"
+# モデルとデータの読み込み
+questions_path = "mao/chapter06/questions-words.txt"
+model_path = "mao/chapter06/GoogleNews-vectors-negative300.bin"
 model = KeyedVectors.load_word2vec_format(model_path, binary=True)
 
-# 出力結果の保存リスト
 results = []
+section_list = []
 
+# tqdm で全行に進捗バーを表示
 with open(questions_path, encoding="utf-8") as f:
-    section = None
-    for line in f:
-        line = line.strip()
+    lines = f.readlines()
 
-        #セクションタイトル
-        if line.startswith(":"):
-            section = line[2:]
-            continue
+section = None
+for line in tqdm(lines, desc="Processing analogies"):
+    line = line.strip()
 
-        #:capital-common-countries 以外はスキップ
-        if section != "capital-common-countries":
-            continue
+    if not line:
+        continue  # 空行をスキップ
 
-        #単語A, B, C, D（Dは正解）
-        A, B, C, D = line.split()
+    if line.startswith(":"):
+        section = line[2:].strip()
+        continue
 
-        #単語が語彙にあるかチェック
-        if all(w in model for w in [A, B, C]):
-            try:
-                # アナロジー計算
-                predicted=model.most_similar(positive=[B, C], negative=[A], topn=1)[0]
-                predicted_word, similarity=predicted
-            except KeyError:
-                predicted_word, similarity="N/A",0.0
-        else:
-            predicted_word, similarity="N/A",0.0
+    parts = line.split()
+    if len(parts) != 4:
+        continue  # 異常行をスキップ
 
-        #結果保存
-        results.append((A, B, C, D, predicted_word, similarity))
+    A, B, C, D = parts
+    section_list.append(section)
 
-#結果確認
+    # アナロジー推論（全セクション対象）
+    if all(w in model for w in [A, B, C]):
+        try:
+            predicted_word, similarity = model.most_similar(
+                positive=[B, C], negative=[A], topn=1)[0]
+        except KeyError:
+            predicted_word, similarity = "N/A", 0.0
+    else:
+        predicted_word, similarity = "N/A", 0.0
+
+    results.append((A, B, C, D, predicted_word, similarity))
+
+# 結果確認
 for row in results[:5]:
     print("\t".join(map(str, row)))
+
+# セクション一覧表示
+ia = pd.Series(section_list).unique()
+print(ia)
+
