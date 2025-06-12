@@ -8,12 +8,12 @@ with open(file, 'r') as r:
         names.append(first_column)
     #文字列の種類をカウント
     count = 0
-    lst = []
+    lst = []#setでやれば初めから重複削除
     for name in names:
         if name not in lst:
             count += 1 
             lst.append(name)
     print(count)
 #結果　136
-#cut -d ' ' -f 1 daiki/chapter02/popular-names.txt | sort | uniq | wc -l
+#cut -f 1 daiki/chapter02/popular-names.txt | sort | uniq | wc -l
 
