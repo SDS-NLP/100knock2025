@@ -34,7 +34,7 @@ def load_anatomy_data(filepath="anatomy.csv"):
 
         return data
 
-# 🔹 メイン実行部（評価用）
+# メイン実行部（評価用）
 if __name__ == "__main__":
     data = load_anatomy_data()
 
@@ -51,7 +51,6 @@ if __name__ == "__main__":
 
         print(f"{total}問目を処理中...", end="\r")
 
-        # LLMに質問
         response = client.chat.completions.create(
             model="meta-llama/llama-4-scout-17b-16e-instruct",
             messages=[{"role": "user", "content": prompt}],
@@ -60,11 +59,9 @@ if __name__ == "__main__":
 
         reply = response.choices[0].message.content.strip().upper()
 
-        # 回答が正解を含んでいたらカウント
         if correct_answer in reply:
             correct += 1
 
-    # 結果表示
-    print()  # 改行
+    print() 
     print(f"正解数: {correct} / {total}")
     print(f"正解率: {correct / total:.2%}")
