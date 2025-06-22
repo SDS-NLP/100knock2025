@@ -132,8 +132,10 @@ dmypy.json
 # Large data files and word vectors
 GoogleNews-vectors-negative300.bin
 questions-words.txt
-ans54.txt
-ans56.txt
+# Chapter 5 answers
+ans*.txt
+country_clusters.csv
+wordsim353
 
 shota/chapter02/popular-names.txt
 shota/chapter02/col2.txt
