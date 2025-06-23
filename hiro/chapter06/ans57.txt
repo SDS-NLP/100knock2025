@@ -1,0 +1,22 @@
+国名単語ベクトル k-meansクラスタリング結果 (k=5)
+==================================================
+
+総国名数: 126
+ベクトル取得成功: 126
+ベクトル取得失敗: 0
+
+クラスタ 1 (35カ国):
+Algeria, Angola, Bangladesh, Bhutan, Botswana, Burundi, Dominica, Eritrea, Fiji, Gabon, Gambia, Ghana, Guinea, Guyana, Jamaica, Kenya, Liberia, Madagascar, Malawi, Mali, Mauritania, Mozambique, Namibia, Nepal, Niger, Nigeria, Rwanda, Senegal, Somalia, Sudan, Suriname, Tuvalu, Uganda, Zambia, Zimbabwe
+
+クラスタ 2 (19カ国):
+Afghanistan, Bahrain, Cyprus, Egypt, Greece, Iran, Iraq, Israel, Jordan, Lebanon, Libya, Malta, Morocco, Oman, Pakistan, Qatar, Syria, Tunisia, Turkey
+
+クラスタ 0 (25カ国):
+Argentina, Bahamas, Belize, Brazil, Cambodia, Chile, China, Colombia, Cuba, Ecuador, Honduras, India, Indonesia, Korea, Laos, Mexico, Nicaragua, Peru, Philippines, Samoa, Taiwan, Thailand, Uruguay, Venezuela, Vietnam
+
+クラスタ 3 (26カ国):
+Albania, Armenia, Azerbaijan, Belarus, Bulgaria, Croatia, Estonia, Georgia, Hungary, Kazakhstan, Kyrgyzstan, Latvia, Lithuania, Macedonia, Moldova, Montenegro, Poland, Romania, Russia, Serbia, Slovakia, Slovenia, Tajikistan, Turkmenistan, Ukraine, Uzbekistan
+
+クラスタ 4 (21カ国):
+Australia, Austria, Belgium, Canada, Denmark, England, Finland, France, Germany, Greenland, Iceland, Ireland, Italy, Japan, Liechtenstein, Netherlands, Norway, Portugal, Spain, Sweden, Switzerland
+
