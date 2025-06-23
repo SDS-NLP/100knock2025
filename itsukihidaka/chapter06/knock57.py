@@ -24,8 +24,6 @@ for country in countries:
         country_vecs.append(model[country])
         valid_countries.append(country)
 
-# DataFrameを作成（有効な国名のみ）
-df = pd.DataFrame(country_vecs, index=valid_countries)
 
 # k-meansクラスタリングを実行
 from sklearn.cluster import KMeans
