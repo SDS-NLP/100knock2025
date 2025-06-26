@@ -35,8 +35,9 @@ def make_data(texts, labels):
 train_data = make_data(train_texts, train_labels)
 dev_data = make_data(dev_texts, dev_labels)
 
-print(train_data[0])
-print(dev_data[0])
+if __name__ == "__main__":
+    print(train_data[0])
+    print(dev_data[0])
     
 
 

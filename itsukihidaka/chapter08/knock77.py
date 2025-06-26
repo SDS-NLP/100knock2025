@@ -1,4 +1,4 @@
-# 問題72で設計したモデルの重みベクトルを訓練セット上で学習せよ。ただし、学習中は単語埋め込み行列の値を固定せよ（単語埋め込み行列のファインチューニングは行わない）。また、学習時に損失値を表示するなど、学習の進捗状況をモニタリングできるようにせよ。
+# 問題76のモデル学習をGPU上で実行せよ。また、学習したモデルの開発セットにおける正解率を求めよ。
 
 from knock70 import E, word_to_index, index_to_word
 from knock71 import train_data, dev_data
@@ -7,6 +7,10 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader, Dataset
+
+# GPU利用可能性のチェック
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+print(f'使用デバイス: {device}')
 
 class WordEmbeddingDataset(Dataset):
     """単語埋め込みの平均ベクトルを使用したデータセットクラス"""
@@ -64,15 +68,16 @@ def train_model(model, train_loader, dev_loader, num_epochs=100, lr=0.01):
     criterion = nn.BCELoss()
     optimizer = optim.SGD(model.parameters(), lr=lr)
     
-    print('モデル学習開始')
-    print('モデルの初期パラメータ:', list(model.parameters()))
-    
     for epoch in range(num_epochs):
         # 学習モード
         model.train()
         total_loss = 0
         
         for batch_X, batch_y in train_loader:
+            # データをGPUに移動
+            batch_X = batch_X.to(device)
+            batch_y = batch_y.to(device)
+            
             optimizer.zero_grad()
             
             # 順伝播
@@ -89,8 +94,6 @@ def train_model(model, train_loader, dev_loader, num_epochs=100, lr=0.01):
         if (epoch + 1) % 10 == 0:
             avg_loss = total_loss / len(train_loader)
             print(f'Epoch [{epoch+1}/{num_epochs}], Loss: {avg_loss:.4f}')
-    print('モデル学習完了')
-    print('モデルの最終パラメータ:', list(model.parameters()))
 
 def evaluate_model(model, dev_loader):
     """モデルの評価を行う関数"""
@@ -100,6 +103,10 @@ def evaluate_model(model, dev_loader):
     
     with torch.no_grad():
         for batch_X, batch_y in dev_loader:
+            # データをGPUに移動
+            batch_X = batch_X.to(device)
+            batch_y = batch_y.to(device)
+            
             outputs = model(batch_X).squeeze()
             predictions = (outputs >= 0.5).float()
             correct += (predictions == batch_y).sum().item()
@@ -119,16 +126,19 @@ def main():
     input_dim = sample_batch[0].shape[1]
     print(f"入力次元数: {input_dim}")
     
-    # モデルを初期化
-    model = LogisticRegression(input_dim)
+    # モデルを初期化してGPUに移動
+    model = LogisticRegression(input_dim).to(device)
     
     # モデルの学習
     train_model(model, train_loader, dev_loader)
     
-    return model
+    # モデルの評価
+    accuracy = evaluate_model(model, dev_loader)
+    
+    return model, accuracy
 
 if __name__ == "__main__":
-    model = main()
+    model, accuracy = main()
 
 
 
