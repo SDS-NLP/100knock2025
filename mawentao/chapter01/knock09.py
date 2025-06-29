@@ -28,7 +28,3 @@ shuffled_words = [shuffle(word) for word in words]
 result = ' '.join(shuffled_words)
 
 print(result)
-
-
-
-
