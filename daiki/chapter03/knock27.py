@@ -1,3 +1,4 @@
+#あんまりわからない
 import gzip
 import json
 import re 
@@ -11,6 +12,7 @@ with gzip.open(path, 'rt', encoding = 'utf-8') as file:
         if article['title'] == 'イギリス':
             uk_text = article['text']
             break
+
 # 1. [[記事名#節名|表示文字]] → “表示文字”
 uk_text = re.sub(
     r'\[\[[^|\]]+#[^|\]]*\|(.+?)\]\]',
