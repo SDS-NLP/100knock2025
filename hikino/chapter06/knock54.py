@@ -22,5 +22,5 @@ with open("../../../questions-words.txt", "r", encoding="utf-8") as f:
             results.append((w1, w2, w3, predicted_word, similarity))
 
 if __name__ == "__main__":
-  for r in results[:5]:
-    print(f"{r[0]}:{r[1]}::{r[2]}:? => {r[3]} ({r[4]:.4f})")
+  for r in results[:10]:
+    print(f"{r[0]}-{r[1]}+{r[2]} => {r[3]} ({r[4]:.4f})")
