@@ -132,6 +132,8 @@ dmypy.json
 # Large data files and word vectors
 GoogleNews-vectors-negative300.bin
 questions-words.txt
+model.pth
+
 # Chapter 5 answers
 ans*.txt
 country_clusters.csv
