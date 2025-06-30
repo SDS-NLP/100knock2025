@@ -1,4 +1,4 @@
-# 問題72で設計したモデルの重みベクトルを訓練セット上で学習せよ。ただし、学習中は単語埋め込み行列の値を固定せよ（単語埋め込み行列のファインチューニングは行わない）。また、学習時に損失値を表示するなど、学習の進捗状況をモニタリングできるようにせよ。
+# 問題73で学習したモデルの開発セットにおける正解率を求めよ。
 
 from knock70 import E, word_to_index, index_to_word
 from knock71 import train_data, dev_data
@@ -64,9 +64,6 @@ def train_model(model, train_loader, dev_loader, num_epochs=100, lr=0.01):
     criterion = nn.BCELoss()
     optimizer = optim.SGD(model.parameters(), lr=lr)
     
-    print('モデル学習開始')
-    print('モデルの初期パラメータ:', list(model.parameters()))
-    
     for epoch in range(num_epochs):
         # 学習モード
         model.train()
@@ -89,8 +86,6 @@ def train_model(model, train_loader, dev_loader, num_epochs=100, lr=0.01):
         if (epoch + 1) % 10 == 0:
             avg_loss = total_loss / len(train_loader)
             print(f'Epoch [{epoch+1}/{num_epochs}], Loss: {avg_loss:.4f}')
-    print('モデル学習完了')
-    print('モデルの最終パラメータ:', list(model.parameters()))
 
 def evaluate_model(model, dev_loader):
     """モデルの評価を行う関数"""
@@ -125,10 +120,13 @@ def main():
     # モデルの学習
     train_model(model, train_loader, dev_loader)
     
-    return model
+    # モデルの評価
+    accuracy = evaluate_model(model, dev_loader)
+    
+    return model, accuracy
 
 if __name__ == "__main__":
-    model = main()
+    model, accuracy = main()
 
 
 
