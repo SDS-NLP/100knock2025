@@ -23,7 +23,7 @@ def load_sst_dataset(file_path, word2id):
             if len(input_ids) == 0:
                 continue  # 空なら除外
 
-            label = torch.tensor([float(label_str)], dtype=torch.float32)
+            label = torch.tensor([float(label_str)], dtype=torch.float32) #テンソル＝多次元の数値配列（スカラー、ベクトル、行列の総称）　ニューラルネットワークの入出力はすべてテンソルなので、変換する
 
             dataset.append({
                 'text': text,
@@ -38,4 +38,5 @@ train_dataset = load_sst_dataset("chapter07/SST-2/train.tsv", word2id)
 dev_dataset = load_sst_dataset("chapter07/SST-2/dev.tsv", word2id)
 
 # 1件確認
-print(train_dataset[0])
+if __name__ == "__main__":
+    print(train_dataset[0])
