@@ -1,29 +1,19 @@
 #73. モデルの学習
-import csv
 import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader, Dataset
-from knock70 import word2id, E
+from knock70 import E
+from knock71 import train_dataset, dev_dataset
 
 class SSTBoWDataset(Dataset):
-    def __init__(self, file_path, word2id, embedding_matrix):
+    def __init__(self, loaded_dataset, embedding_matrix):
         self.data = []
-        self.embedding_matrix = embedding_matrix
-        with open(file_path, 'r', encoding='utf-8') as f:
-            reader = csv.reader(f, delimiter='\t')
-            next(reader)  # skip header
-            for row in reader:
-                if len(row) != 2:
-                    continue
-                text, label_str = row
-                tokens = text.strip().split()
-                input_ids = [word2id[w] for w in tokens if w in word2id]
-                if not input_ids:
-                    continue
-                emb_vec = self.embedding_matrix[input_ids].mean(dim=0)  # 平均ベクトル
-                label = float(label_str)
-                self.data.append((emb_vec, torch.tensor([label], dtype=torch.float32)))
+
+        for example in loaded_dataset:
+            input_ids = example["input_ids"]
+            emb_vec = embedding_matrix[input_ids].mean(dim=0)
+            self.data.append((emb_vec, example["label"]))
 
     def __len__(self):
         return len(self.data)
@@ -79,11 +69,13 @@ def evaluate(model, data_loader, device):
 
 embedding_matrix = torch.tensor(E, dtype=torch.float32)
 embedding_matrix.requires_grad = False
-train_dataset = SSTBoWDataset("chapter07/SST-2/train.tsv", word2id, embedding_matrix)
-dev_dataset = SSTBoWDataset("chapter07/SST-2/dev.tsv", word2id, embedding_matrix)
+train_dataset = SSTBoWDataset(train_dataset, embedding_matrix)
+dev_dataset = SSTBoWDataset(dev_dataset, embedding_matrix)
 
 train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
 dev_loader = DataLoader(dev_dataset, batch_size=32)
 
 model = BoWLogisticRegression(embedding_dim=embedding_matrix.size(1))
-train_model(model, train_loader, dev_loader, epochs=10, lr=1e-3)
+
+if __name__ == "__main__":
+    train_model(model, train_loader, dev_loader, epochs=10, lr=1e-3)

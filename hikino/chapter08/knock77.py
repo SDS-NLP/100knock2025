@@ -1,0 +1,21 @@
+# Epoch 1: Loss = 0.9286
+# Epoch 2: Loss = 0.8175
+# Epoch 3: Loss = 0.0013
+# Epoch 4: Loss = 0.6341
+# Epoch 5: Loss = 0.3997
+# Epoch 6: Loss = 0.0102
+# Epoch 7: Loss = 0.3864
+# Epoch 8: Loss = 0.2290
+# Epoch 9: Loss = 0.0063
+# Epoch 10: Loss = 0.2571
+# Epoch 11: Loss = 0.0000
+# Epoch 12: Loss = 0.1627
+# Epoch 13: Loss = 0.9964
+# Epoch 14: Loss = 0.0820
+# Epoch 15: Loss = 0.0292
+# Epoch 16: Loss = 1.0617
+# Epoch 17: Loss = 0.2592
+# Epoch 18: Loss = 0.0110
+# Epoch 19: Loss = 1.9022
+# Epoch 20: Loss = 0.1442
+# Dev Accuracy: 0.7947
