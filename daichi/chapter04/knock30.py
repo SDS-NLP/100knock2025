@@ -10,12 +10,35 @@ text = """
 """
 
 tagger = MeCab.Tagger()
-tagger.parse("")  # セグフォ対策
+sentences = []
+morphs = []
 
-node = tagger.parseToNode(text) # 形態素解析の実行
-# 形態素解析の結果を1行ずつ処理
-while node:
-    features = node.feature.split(",") # 形態素の特徴をカンマで分割
-    if features[0] == "動詞": # 品詞が動詞の場合
-        print(node.surface) # 動詞の表層形を出力
-    node = node.next # 次の形態素に移動
+for line in tagger.parse(text).splitlines():
+    if line == 'EOS':
+        if morphs:
+            sentences.append(morphs)
+            morphs = []
+        continue
+
+    if '\t' not in line:
+        continue
+
+    surface, feature_str = line.split('\t', maxsplit=1)
+    feature = feature_str.split(',')
+
+    if len(feature) < 7:
+        continue
+
+    morph = {
+        'surface': surface,
+        'base': feature[6],
+        'pos': feature[0],
+        'pos1': feature[1]
+    }
+
+    morphs.append(morph)
+
+for i, sentence in enumerate(sentences):
+    print(f'--- 文{i+1} ---')
+    for m in sentence:
+        print(m)
