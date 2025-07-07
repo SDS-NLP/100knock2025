@@ -1,7 +1,7 @@
 from transformers import BertTokenizer
 
 # 事前学習済みの「bert-base-cased」というBERTのトークナイザを読み込み
-tokenizer = BertTokenizer.from_pretrained("bert-base-cased")
+tokenizer = BertTokenizer.from_pretrained("bert-base-cased") # 大文字・小文字を区別する英語BERT
 
 
 # 入力文
