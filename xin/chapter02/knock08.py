@@ -1,8 +1,8 @@
-from collections import Counter
+from collections import Counter 
 
 # ファイルの1列目の出現頻度を取得する関数
 def count_frequency_in_first_column(filepath):
-    counter = Counter()
+    counter = Counter() # Counterクラスを使用
     with open(filepath, 'r', encoding='utf-8') as file:
         for line in file:
             columns = line.split()

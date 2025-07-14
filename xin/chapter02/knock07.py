@@ -1,6 +1,6 @@
 # ファイルの1列目のユニークな文字列を取得する関数
 def get_unique_values_in_first_column(filepath):
-    unique_values = set()
+    unique_values = set() # セットを使用してユニークな値を保持
     with open(filepath, 'r', encoding='utf-8') as file:
         for line in file:
             # 各行をスペースで分割して1列目を取得

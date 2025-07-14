@@ -11,8 +11,8 @@ def replace_tabs_with_spaces_sed(filepath, n):
     result = subprocess.run(
         ['sed', '-n', f'1,{n}p', filepath], stdout=subprocess.PIPE, text=True
     )
-    sed_output = result.stdout.replace('\t', ' ')
-    return sed_output
+    sed_output = subprocess.run(['tr', '\t', ' '], input=result.stdout, text=True, stdout=subprocess.PIPE)
+    return sed_output.stdout
 
 # ファイルパスと行数を指定
 file_path = "/home/tanxin/100knock2025/xin/chapter02/popular-names.txt"
