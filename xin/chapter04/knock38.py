@@ -22,6 +22,8 @@ with gzip.open('/home/tanxin/100knock2025/xin/chapter03/jawiki-country.json.gz',
             parts = line.split('\t')
             if len(parts) < 2:
                 continue
+            if parts[0]==parts[1]==parts[2]==parts[3]:
+                continue
             surface = parts[0]
             features = parts[4].split('-')
             if features[0]=='名詞' and features[1] not in {'非自立', '接尾','数詞'}:
@@ -36,19 +38,18 @@ with gzip.open('/home/tanxin/100knock2025/xin/chapter03/jawiki-country.json.gz',
         
         doc_count += 1
 
-            
 
 
 def tfidf(tf, df, N):
     return tf * math.log(N/df+1) if df>0 else 0.0
-
 # 単語ごとに最大TF-IDFを計算
 word_tfidf = {}
 for w in df:
     max_score = 0
     for tf in docs_tf:
         if tf[w]>0:
-            score = tfidf(tf[w], df[w], doc_count)
+            idf= math.log(doc_count/df[w]+1)
+            score = tfidf(tf[w], idf[w], doc_count)
             if score>max_score:
                 max_score = score
     word_tfidf[w] = max_score
@@ -56,7 +57,7 @@ for w in df:
 # 上位20語
 top20 = sorted(word_tfidf.items(), key=lambda x: x[1], reverse=True)[:20]
 
-print(f'{"単語":<15}{"TF":>5}{"DF":>5}{"TF-IDF":>10}')
+print(f'{"単語":<15}{"TF":>5}{"IDF":>5}{"TF-IDF":>10}')
 for w, sc in top20:
     # 最大TFを再取得
     max_tf = max(tf[w] for tf in docs_tf)

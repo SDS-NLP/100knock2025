@@ -3,6 +3,7 @@ from sklearn.feature_extraction import DictVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
+
 # ベクトル化
 vectorizer = DictVectorizer()
 X_train = vectorizer.fit_transform(train_dicts)
