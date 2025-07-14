@@ -30,7 +30,7 @@ print(f"{len(country_names)} countries found in the model vocabulary.")
 # KMeansクラスタリング
 num_clusters = 5
 kmeans = KMeans(n_clusters=num_clusters, random_state=42, n_init=10)
-labels = kmeans.fit_predict(country_vectors)
+labels = kmeans.fit_predict(country_vectors) #どのレベル（グループ）
 
 # クラスタごとに国をまとめて表示
 clusters = [[] for _ in range(num_clusters)]
