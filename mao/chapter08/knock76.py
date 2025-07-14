@@ -57,4 +57,4 @@ def evaluate(model, dataloader):
 
 # --- 開発セットでの正解率評価 ---
 dev_acc = evaluate(model, dev_loader)
-print(f"✅ 開発セットの正解率: {dev_acc:.4f}") #開発セットの正解率: 0.7764
+print(f"✅ 開発セットの正解率: {dev_acc:.4f}") #開発セットの正解率: 0.7890
